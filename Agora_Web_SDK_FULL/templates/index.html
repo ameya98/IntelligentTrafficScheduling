@@ -31,7 +31,7 @@ Display Local Video Feed: <input id="video" type="checkbox" checked></input>
 </div>
 
 <div id="video" style="margin:0 auto;">
-    <div id="agora_local" class="container" style="width:420px;height:294px;display:inline-block;margin-left: 8%; margin-right: 3.5%;"></div>
+    <div id="agora_local" class="container" style="width:420px;height:294px;display:inline-block;margin-left: 23%; margin-right: 3.5%;"></div>
 </div>
 
 
@@ -87,7 +87,7 @@ function join() {
           localStream.play('agora_local');
 
           // get all video elements
-          var videlements = $("video")
+          var videlements = $("video");
 
           // and keep saving frames
           function shoot(){
