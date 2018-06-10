@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/vendor/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Traffic Signals</title>
+    <script src="../static/vendor/jquery.js"></script>
+</head>
+<body>
+    <h3 class="text-center display-3 m-5">Traffic Light 2</h3>
+    <div class="container text-center">
+        <img src="../static/signalimages/rtl.png" class="img-fluid" id="trafficlight" alt="Traffic light.">
+    </div>
+
+    <div class="text-center m-5">
+        <button type="button" class="btn btn-danger"  onclick="make_red()">Red</button>
+        <button type="button" class="btn btn-warning" onclick="make_yellow()">Yellow</button>
+        <button type="button" class="btn btn-success" onclick="make_green()">Green</button>
+    </div>
+
+<script language="JavaScript">
+
+    function make_red(){
+        $("#trafficlight").delay(500).attr("src", "../static/signalimages/rtl.png");
+    };
+
+    function make_yellow(){
+        $("#trafficlight").delay(500).attr("src", "../static/signalimages/ytl.png");
+    };
+
+    function make_green(){
+        $("#trafficlight").delay(500).attr("src", "../static/signalimages/gtl.png");
+    };
+
+    setInterval(function () {
+        $.get("/getsignaldata",
+        function (data, status) {
+            console.log(data);
+
+            if (data["2"] == "green"){
+                make_yellow();
+                make_green();
+            }
+            else if(data["2"] == "red"){
+                make_yellow();
+                make_red();
+            }
+        });
+    }, 2000);
+
+</script>
+</body>
+</html>
